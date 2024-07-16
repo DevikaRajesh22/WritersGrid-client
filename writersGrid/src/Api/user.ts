@@ -53,3 +53,12 @@ export const login = async (email: string, password: string) => {
         console.log(error)
     }
 }
+
+export const profile=async()=>{
+    try{
+        const res=await Api.get(UserEndpoint.userProfile)
+        return res
+    }catch(error){
+        console.log(error)
+    }
+}

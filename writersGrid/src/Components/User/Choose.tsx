@@ -25,7 +25,7 @@ const Choose = () => {
     <div className="bg-gray-300">
       <div className="text-center pb-8 pt-10">
         <h3 className="font-semibold text-lg md:text-xl lg:text-2xl">
-          Why choose Writers Hub?
+          Why choose Writers Grid?
         </h3>
       </div>
       <div className="flex flex-col sm:flex-row pb-10">

@@ -8,6 +8,7 @@ import EditProfile from "../Pages/User/Profile/EditProfile"
 import Articles from "../Pages/User/Articles/Articles"
 import MyArticles from "../Pages/User/Articles/MyArticles"
 import NewArticle from "../Pages/User/Articles/NewArticle"
+import EditArticles from "../Pages/User/Articles/EditArticles"
 import Error from "../Pages/User/Error/Error"
 import UserLoggedOut from '../Components/User/UserLoggedOut'
 import UserLoggedIn from '../Components/User/UserLoggedIn'
@@ -27,6 +28,7 @@ const userRoute = () => {
         <Route path='articles' element={<Articles />} />
         <Route path='myArticles' element={<MyArticles />} />
         <Route path='newArticle' element={<NewArticle/>}/>
+        <Route path='editArticle/:id' element={<EditArticles/>}/>
       </Route>
       <Route path='*' element={<Error />} />
     </Routes>

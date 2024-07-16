@@ -13,3 +13,21 @@ export const newArticle = async (formData: FormData) => {
         console.log(error)
     }
 }
+
+export const getArticles=async()=>{
+    try{
+        const res=await Api.get(ArticleEndPoint.getArticles)
+        return res
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const findArticleById=async(id:string)=>{
+    try{
+        const res=await Api.get(`${ArticleEndPoint.findArticleById}?articleId=${id}`);
+        return res
+    }catch(error){
+        console.log(error)
+    }
+}

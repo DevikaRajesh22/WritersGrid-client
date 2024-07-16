@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Otp = () => {
     const [otp, setOtp] = useState("");
-    const [seconds, setSeconds] = useState(15);
+    const [seconds, setSeconds] = useState(59);
     const [resendOtp, setResendOtp] = useState(false);
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -50,7 +50,7 @@ const Otp = () => {
         e.preventDefault()
         const res = await otpResend()
         setResendOtp(false)
-        setSeconds(15)
+        setSeconds(59)
         if (res?.data.success) {
             toast.success('New otp sent..')
         } else if (!res?.data.success) {

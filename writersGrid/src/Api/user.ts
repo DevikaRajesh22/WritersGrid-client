@@ -47,40 +47,40 @@ export const otpResend = async () => {
 
 export const login = async (email: string, password: string) => {
     try {
-        const res=await Api.post(UserEndpoint.userLogin,{email,password})
+        const res = await Api.post(UserEndpoint.userLogin, { email, password })
         return res
     } catch (error) {
         console.log(error)
     }
 }
 
-export const profile=async()=>{
-    try{
-        const res=await Api.get(UserEndpoint.userProfile)
+export const profile = async () => {
+    try {
+        const res = await Api.get(UserEndpoint.userProfile)
         return res
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
 
-export const userLogout=async()=>{
-    try{
-        const res=await Api.post(UserEndpoint.userLogout)
+export const userLogout = async () => {
+    try {
+        const res = await Api.post(UserEndpoint.userLogout)
         return res
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
 
-export const editProfile=async(formData:FormData)=>{
-    try{
-        const res=await Api.put(UserEndpoint.userEditProfile,formData,{
+export const editProfile = async (formData: FormData) => {
+    try {
+        const res = await Api.put(UserEndpoint.userEditProfile, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             }
         });
         return res
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }

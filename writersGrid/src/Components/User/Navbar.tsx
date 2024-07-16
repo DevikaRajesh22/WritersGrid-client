@@ -101,10 +101,10 @@ const Navbar = () => {
             <div className="w-64 h-full bg-white p-4 space-y-4">
               <ul className="space-y-4">
                 <li>
-                  <a href="#" className="block py-2 px-3 text-gray-700 hover:bg-gray-100">Articles</a>
+                  <Link to="/articles" className="block py-2 px-3 text-gray-700 hover:bg-gray-100">Articles</Link>
                 </li>
                 <li>
-                  <a href="#" className="block py-2 px-3 text-gray-700 hover:bg-gray-100">My Articles</a>
+                  <Link to="/myArticles" className="block py-2 px-3 text-gray-700 hover:bg-gray-100">My Articles</Link>
                 </li>
               </ul>
             </div>
@@ -114,10 +114,10 @@ const Navbar = () => {
           <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-white md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0" style={{ backgroundColor: '#013220' }}>
               <li>
-                <a href="#" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Articles</a>
+                <Link to="/articles" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Articles</Link>
               </li>
               <li>
-                <a href="#" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">My Articles</a>
+                <Link to="/myArticles" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">My Articles</Link>
               </li>
             </ul>
           </div>

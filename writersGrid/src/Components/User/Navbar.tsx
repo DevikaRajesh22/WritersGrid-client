@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import logo from '../../assets/logoNoBg.png';
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import user from '../../assets/user.png';
-import { profile } from '../../Api/user';
+import { profile, userLogout } from '../../Api/user';
+import { logout } from '../../Store/Slice/authSlice';
+import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 interface RootState {
   auth: {
@@ -17,6 +20,8 @@ const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -25,6 +30,19 @@ const Navbar = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  const handleLogout=async()=>{
+    try{
+      const res=await userLogout()
+      if(res?.data.success){
+        dispatch(logout())
+        toast.success('Logged out successfully...')
+        navigate('/login')
+      }
+    }catch(error){
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,7 +62,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white fixed w-full z-20 top-0 border-b border-gray-200" style={{ backgroundColor: '#013220' }}>
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={logo} style={{ height: 50, width: 50 }} />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Writers Grid</span>
         </a>
@@ -66,7 +84,7 @@ const Navbar = () => {
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1" style={{ zIndex: 30 }}>
                   <Link to='/profile' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</Link>
-                  <Link to='/logout' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</Link>
+                  <Link to='#' onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</Link>
                 </div>
               )}
             </div>

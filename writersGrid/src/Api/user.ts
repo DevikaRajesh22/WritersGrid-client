@@ -62,3 +62,25 @@ export const profile=async()=>{
         console.log(error)
     }
 }
+
+export const userLogout=async()=>{
+    try{
+        const res=await Api.post(UserEndpoint.userLogout)
+        return res
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const editProfile=async(formData:FormData)=>{
+    try{
+        const res=await Api.put(UserEndpoint.userEditProfile,formData,{
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        });
+        return res
+    }catch(error){
+        console.log(error)
+    }
+}

@@ -31,3 +31,16 @@ export const findArticleById=async(id:string)=>{
         console.log(error)
     }
 }
+
+export const editArticle=async(formData:FormData)=>{
+    try{
+        const res=await Api.put(ArticleEndPoint.editArticle,formData,{
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+        return res
+    }catch(error){
+        console.log(error)
+    }
+}

@@ -1,6 +1,12 @@
+import Navbar from "../../../Components/User/Navbar"
+import ArticleComponent from "../../../Components/User/ArticleComponent"
+
 const Articles = () => {
   return (
-    <div>Articles</div>
+    <div className="pt-20">
+      <Navbar />
+      <ArticleComponent />
+    </div>
   )
 }
 

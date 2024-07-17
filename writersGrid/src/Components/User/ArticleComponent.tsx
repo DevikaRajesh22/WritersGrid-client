@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getAllArticles } from "../../Api/article";
 import userImage from "../../assets/user.png";
+import { useNavigate } from "react-router-dom";
 
 interface User {
     id: string;
@@ -66,12 +67,10 @@ const ArticleComponent = () => {
         return `${day} ${month}, ${year}`;
     }
 
-    // Calculate pagination
     const indexOfLastArticle = currentPage * articlesPerPage;
     const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
     const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
 
-    // Change page
     const paginate = (pageNumber: number) => {
         setCurrentPage(pageNumber);
     };
@@ -97,7 +96,7 @@ const ArticleComponent = () => {
                             </div>
                             <hr className="border-gray-300" />
                             <div className="px-4 py-2">
-                                <Link to="/article-details" className="hover:underline">
+                                <Link to={`/singleArticle/${a.id}`} className="hover:underline">
                                     <h2 className="text-xl font-bold text-gray-800 truncate">
                                         {a.title}
                                     </h2>

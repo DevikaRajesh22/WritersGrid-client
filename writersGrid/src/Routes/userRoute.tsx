@@ -9,6 +9,7 @@ import Articles from "../Pages/User/Articles/Articles"
 import MyArticles from "../Pages/User/Articles/MyArticles"
 import NewArticle from "../Pages/User/Articles/NewArticle"
 import EditArticles from "../Pages/User/Articles/EditArticles"
+import SingleArticle from "../Pages/User/Articles/SingleArticle"
 import Error from "../Pages/User/Error/Error"
 import UserLoggedOut from '../Components/User/UserLoggedOut'
 import UserLoggedIn from '../Components/User/UserLoggedIn'
@@ -27,8 +28,9 @@ const userRoute = () => {
         <Route path="editProfile" element={<EditProfile />} />
         <Route path='articles' element={<Articles />} />
         <Route path='myArticles' element={<MyArticles />} />
-        <Route path='newArticle' element={<NewArticle/>}/>
-        <Route path='editArticle/:id' element={<EditArticles/>}/>
+        <Route path='newArticle' element={<NewArticle />} />
+        <Route path='editArticle/:id' element={<EditArticles />} />
+        <Route path='singleArticle/:id' element={<SingleArticle />} />
       </Route>
       <Route path='*' element={<Error />} />
     </Routes>

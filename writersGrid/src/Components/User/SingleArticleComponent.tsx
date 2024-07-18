@@ -48,7 +48,6 @@ const SingleArticleComponent = () => {
     });
   }
 
-
   return (
     <div className="max-w-4xl mx-auto py-8">
       {article ? (
@@ -56,30 +55,28 @@ const SingleArticleComponent = () => {
           <img
             src={article.image}
             alt="Article Cover"
-            className="w-full h-64 object-cover object-center"
+            className="w-full h-auto object-contain object-center"
           />
           <div className="p-6">
             <div className="flex items-center mb-4">
-              <Link to='/articles'>
-              <button
-                className="text-gray-600 hover:text-gray-800 flex items-center"
-              >
-                <svg
-                  className="w-4 h-4 mr-1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-                Back
-              </button>
+              <Link to="/articles">
+                <button className="text-gray-600 hover:text-gray-800 flex items-center">
+                  <svg
+                    className="w-4 h-4 mr-1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                  Back
+                </button>
               </Link>
             </div>
             <h2 className="text-3xl font-bold text-gray-800 mb-6">

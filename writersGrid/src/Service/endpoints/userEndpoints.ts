@@ -6,6 +6,9 @@ const userRoutes={
     userProfile:'/user/profile',
     userLogout:'/user/logout',
     userEditProfile:'/user/editProfile',
+    userForgotPassword:'/user/forgotPassword',
+    userVerifyOtpForgotPassword:'/user/verifyOtpForgotPassword',
+    userResetPassword:'/user/resetPassword',
 }
 
 export default userRoutes

@@ -1,11 +1,15 @@
 import { useState, useEffect, MouseEvent } from "react";
 import { toast } from "react-toastify";
-import { verifyOtp, otpResend } from "../../../Api/user";
+import { verifyOtp, otpResend, verifyOtpForgotPassword } from "../../../Api/user";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../../Store/Slice/authSlice";
 import { useNavigate } from "react-router-dom";
 
-const Otp = () => {
+interface forgotPassword {
+    user: boolean
+}
+
+const Otp = ({ user }: forgotPassword) => {
     const [otp, setOtp] = useState("");
     const [seconds, setSeconds] = useState(59);
     const [resendOtp, setResendOtp] = useState(false);
@@ -33,13 +37,24 @@ const Otp = () => {
                 toast.error('Invalid OTP !!')
                 return
             }
-            const res = await verifyOtp(otp)
-            if (res?.data.success) {
-                dispatch(setCredentials(res.data.token))
-                toast.success('Signed up successfully...')
-                navigate('/login')
-            } else if (!res?.data.success) {
-                toast.error(res?.data.message)
+            if (user) {
+                const res = await verifyOtpForgotPassword(otp)
+                if (res?.data.success) {
+                    toast.success('Success...')
+                    navigate(`/resetPassword`)
+                  }
+                  else if (!res?.data.success) {
+                    toast.error(res?.data.message)
+                  }
+            } else {
+                const res = await verifyOtp(otp)
+                if (res?.data.success) {
+                    dispatch(setCredentials(res.data.token))
+                    toast.success('Signed up successfully...')
+                    navigate('/login')
+                } else if (!res?.data.success) {
+                    toast.error(res?.data.message)
+                }
             }
         } catch (error) {
             console.log(error)

@@ -10,6 +10,8 @@ import MyArticles from "../Pages/User/Articles/MyArticles"
 import NewArticle from "../Pages/User/Articles/NewArticle"
 import EditArticles from "../Pages/User/Articles/EditArticles"
 import SingleArticle from "../Pages/User/Articles/SingleArticle"
+import ForgotPassword from "../Pages/User/ForgotPassword/ForgotPassword"
+import ResetPassword from "../Pages/User/ForgotPassword/ResetPassword"
 import Error from "../Pages/User/Error/Error"
 import UserLoggedOut from '../Components/User/UserLoggedOut'
 import UserLoggedIn from '../Components/User/UserLoggedIn'
@@ -21,7 +23,10 @@ const userRoute = () => {
       <Route path="" element={<UserLoggedOut />}>
         <Route path="signup" element={<Signup />} />
         <Route path="login" element={<Login />} />
-        <Route path="otp" element={<Otp />} />
+        <Route path="otp" element={<Otp user={false} />} />
+        <Route path="forgotPassword" element={<ForgotPassword />} />
+        <Route path='resetPassword' element={<ResetPassword />} />
+        <Route path='forgotPasswordOtp' element={<Otp user={true}/>}/>
       </Route>
       <Route path="" element={<UserLoggedIn />}>
         <Route path='profile' element={<Profile />} />

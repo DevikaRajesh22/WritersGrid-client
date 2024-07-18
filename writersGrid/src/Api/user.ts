@@ -84,3 +84,45 @@ export const editProfile = async (formData: FormData) => {
         console.log(error)
     }
 }
+
+export const forgotPassword = async (email: string) => {
+    try {
+        const res = await Api.post(UserEndpoint.userForgotPassword, { email });
+        const token = res.data.token
+        localStorage.setItem('userotpforgotpassword', token)
+        return res
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const verifyOtpForgotPassword = async (otp: string) => {
+    try {
+        const token = localStorage.getItem('userotpforgotpassword')
+        const res = await Api.post(UserEndpoint.userVerifyOtpForgotPassword, { otp }, {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        })
+        return res
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const resetPassword = async (email: string, password: string) => {
+    try {
+        const token = localStorage.getItem('userotpforgotpassword')
+        const res = await Api.post(UserEndpoint.userResetPassword, { email, password }, {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        })
+        if (res.data.success) {
+            localStorage.removeItem('userotpforgotpassword')
+        }
+        return res
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { findArticleById } from "../../Api/article";
+import userImage from '../../assets/user.png';
 
 interface User {
   id: string;
@@ -84,7 +85,7 @@ const SingleArticleComponent = () => {
             </h2>
             <div className="flex items-center mb-4">
               <img
-                src={article.userId.image}
+                src={article.userId.image || userImage}
                 alt="Author"
                 className="h-8 w-8 rounded-full mr-2 object-cover"
               />
